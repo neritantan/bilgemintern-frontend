@@ -16,8 +16,6 @@ pipeline {
                 docker run -d --network frontend-net --network-alias backend --name frontend-backend ghcr.io/neritantan/bilgemintern-backend:latest
                 docker run -d --network frontend-net --name frontend-app bilgemintern-frontend:latest
                 sleep 30
-                docker ps
-                docker logs frontend-app
                 docker exec frontend-app wget -q -O- http://127.0.0.1/
                 '''
             }
