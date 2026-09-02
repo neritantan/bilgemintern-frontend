@@ -3,6 +3,11 @@
 pipeline {
     agent any
     stages {
+        stage('Scan') {
+            steps {
+                gitleaks()
+            }
+        }
         stage('Build') {
             steps {
                 sh 'docker build -t bilgemintern-frontend:latest .'
