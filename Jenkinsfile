@@ -7,6 +7,7 @@ pipeline {
             steps {
                 gitleaks()
                 trivyFs()
+                sonarScan('bilgemintern-frontend')
             }
         }
         stage('Build') {
