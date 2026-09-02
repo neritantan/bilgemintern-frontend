@@ -6,11 +6,17 @@ pipeline {
         stage('Scan') {
             steps {
                 gitleaks()
+                trivyFs()
             }
         }
         stage('Build') {
             steps {
                 sh 'docker build -t bilgemintern-frontend:latest .'
+            }
+        }
+        stage('Image Scan') {
+            steps {
+                trivyImage('bilgemintern-frontend:latest')
             }
         }
         stage('Test') {
